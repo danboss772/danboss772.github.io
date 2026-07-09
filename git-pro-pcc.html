@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+ pre {
+  background-color: black;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: "Courier New", Consolas, monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+  border-left: 4px solid lightblue;
+}
+
+code {
+  font-family: inherit;
+}
+ </style>
+ <body>
+ <h1>Co je potřeba vědět ke GITu na PPC?</h1>
+ 
+ <h4>K čemu to slouží?</h4>
+ Git je obecně nístrojem pro zálohování aktuální verze adresáře. Již není potřeba pojmenovávat milion souborů názvy <i>hw01</i>, <i>hw01_final</i>,  <i>hw01_opravdu_final</i> atd. Pomoci nástroje Git je možné vrátit se k nějaké verzi souborů a stavů adresáře. Také je možné nahrát tento adresář na vzdálený repozitář, kterým je v našém případě GitLab.
+ 
+ <h4>Začináme</h4>
+ <p>Nejdřive je potřeba stáhnout git. Otevřeme <b>bash</b>, přejdeme do potřebného adresáře pomoci <b>cd</b> a založíme nový přikazem <b>mkdir</b>. Následujícímí přikazy nainstalujeme <b>git</b>.</p>
+ <pre><code> # Pro Ubuntu
+ 
+ apt-get update
+ apt-get install git
+ 
+ # Pro Fedoru
+ 
+ dnf install git
+</code></pre>
+Dále je potřeba založit adresář. Je to možné buď lokálně přikazem <b>git init</b> nebo založením adresáře pomoci GUI na GitLabu a následným přikazem <b>git clone adresar</b>. Vypadá to následně (stačí z přikazové řádky prohlížeče okopírovat odkaz):
+
+<pre><code> git clone https://gitlab.fit.cvut.cz/lytvyden/webpage
+</code></pre>
+
+Toto je potřeba udělat pouze jednou. Pokud potom náhodou budete pracovat na více počitačích, aktuální verzi adresáře je možné stáhnout pomoci <b>git pull</b>.
+
+<h4>Přidání souborů</h4>
+
+Nakodovali jsme si něco. Git umí 
+
+
+</body>

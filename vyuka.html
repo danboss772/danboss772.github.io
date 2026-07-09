@@ -1,3 +1,46 @@
  <!DOCTYPE html>
- <h2>Personal website</h2>
- <a href="./vyuka_materials/TBK.pdf" download>Download the pdf</a>
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+body {
+  background-color: white;
+  color: black;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+.topnav {
+  background-color: yellow;
+  display: flex;
+}
+.push-right {
+  margin-left: auto;
+}
+.topnav a {
+  padding: 0px 16px;
+  text-decoration: none;
+  color: black;
+}
+</style>
+ </head>
+ <body>
+ <div class="topnav">
+  <a class="active" href="index.html">Home</a>
+  <a href="#" onclick="myFunction(); return false;" class="push-right">Dark theme</a>
+</div>
+
+ <h2>Výukové materiály</h2>
+ <h4>Řešené testy</h4>
+ <ul>
+ <li><a href="vyuka_materials/prijmacky/resene/2026-1-resene.pdf" download>2026 1. termín</a></li>
+ </ul>
+ <h4>Jiné materiály</h4>
+ <ul>
+ <li><a href="vyuka_materials/prijmacky/jine/rovnice_a_soustavy_du.pdf" download>Rovnice a soustavy domácí úkol</a></li>
+ <li><a href="vyuka_materials/prijmacky/jine/rovnice_slovni_ulohy.pdf" download>Rovnice slovní úlohy domácí úkol</a></li>
+  </ul>
+  <script src="script.js"></script>
+  </body>

@@ -40,8 +40,62 @@
         font-size: 18px;
         display: inline-block;
         text-decoration: none;
+        }
+        
+        #myForm {
+    display: block;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    border: 1px solid #ddd;
+    background-color: lightblue;
+    
+    width: 60%;
+            padding: 15px;
+            background-color: lightblue;
+            border: 1px solid #333;
+    	    box-sizing: border-box;
+  }
+  
 
-}
+  #myForm label,
+  #myForm span {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  #myForm input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  #myForm button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
+  #myForm button[type="submit"] {
+    background-color: blue;
+    color: white;
+  }
+  #myForm .field-group {
+    margin-bottom: 32px;
+  }
+
+  #myForm button[type="reset"] {
+  }
+  #result {
+  white-space: pre-line;
+  color: red;
+	}
+
+
   </style>
   <script data-goatcounter="https://danboss.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
@@ -69,8 +123,19 @@
   <p>Psal se rok 2024. Po projižďce na kolech na Karlštejn a Okoř jsme unavení vjeli do lesa. Místo okolo nás nadchlo svoji krásou, ale žízeň byla cítit a museli jsme si chvíli dat pauzu na rozcesti. Tím rozcestím vedla naučná stezka, tak jsem začal číst tabulku, mezitím co Áďa mi něco vyprávěla o big tech IT, což dělá celou dobu a já už měl toho dost (promiň lásko).</p>
   <i>...Pro našého Pána Ježiše Krista musela podstoupit nepředstavitelná muka. Když si odmítla vzit zámožného Římana jmeném Elisius, který se klaněl modlám, polévali ji roztaveným olovem. Zázrakem to ovšem přežila. V žaláři, kam byla uvržena, se jí zjevil ďábel v andělské po době a nabádal ji ke sňatku, ona ho však odhalila a spoutala kovovým řetězem. Lámali ji v kole osázeném železnými ostnz. Všechno však přečkala a nakonec ji usmrtili až mečem...</i>
   <p>Nestihl jsem si přečist ani jeden odstavec, když v tom Áďa zahlásila, že okolo sochy, u níž právě stojíme, jsou v květináčích umístěné kytky. Vraj rovnaké kvety, aké mala jej milovaná babička na chalupe, čo jej pripomenulo detstvo.</p>
-  <p>Vaším úkolem je proto zjistit, o jaké květině mluvila Áďa. V průběhu let se měnili, ale teď jsme byli zkontrolovat, a náhodou jsou tam úplně stejné. Sice Áďa je Slovenka, ale odpověď je treba písať český. Zatím není možné zkontrolovat odpověď, ale v nejbližší době to přidám. Rovněž připominám, že bez této úlohy není možné najít diapozitiva naších s Áďou vzpomínek, o kterých bude řeč pozdějí.</p>
-
+  <p>Vaším úkolem je proto zjistit, o jaké květině mluvila Áďa. V průběhu let se měnili, ale teď jsme byli zkontrolovat, a náhodou jsou tam úplně stejné. Sice Áďa je Slovenka, ale odpověď je treba písať český. Zatím odpovědi jsou kontrolované v testovacím režimu. Rovněž připominám, že bez této úlohy není možné najít diapozitiva naších s Áďou vzpomínek, o kterých bude řeč pozdějí.</p>
+  
+  <form id="myForm" onsubmit="return false;">
+    <div class="field-group">
+    <label for="fname">Název kytky:</label>
+    <input type="text" name="fname" id="fname">
+  </div>
+    <p id="result">Zkuste zadat odpověď</p>
+    <button type="submit" onclick="submitForm()">Zkontrolovat</button>
+    <button type="reset">Vymazat</button>
+  </form>
+  
+  
   <h4 id="dalsi">Druhý quest aneb nepovedená schovka knížky</h4>
   <h5 id="druhy">Ukradli to bezdomovci</h5>
   <p>Bohužel jeden z vás nahlásil, že kniha už tam není, asi si ji vzalí bezdomovcí. Snad si ji přečtou, ať je víc schopných ajťáků jakou je Adélka. A ty vzpomínky už nám nikdo nevrátí. Každopádně informace dole jsou neaktuální. Pořád mám PDF knihy, avšak ho nemohu dat sem kvůli autorským právům, tak kdyžtak mi pošlete mail a čekejte na další quest.</p>
@@ -94,4 +159,46 @@
    <p>A potom začaly těch nějlepších pět let s ní. Nejdříve long-distance relationship a teď krásný vztah.</p>
 </body>
 	<script src="script.js"></script>
+	<script>
+  async function submitForm() {
+    const fname = document.getElementById('fname').value;
+    const resultEl = document.getElementById('result');
+
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: 'form-submit',
+        title: 'Password attempt kytky',
+        event: true
+      });
+    }
+
+    try {
+      const res = await fetch('https://danboss.pythonanywhere.com/kytky', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fname })
+      });
+
+      if (!res.ok) {
+        resultEl.innerText = `Chyba serveru (status ${res.status})`;
+        return;
+      }
+
+      const data = await res.json();
+      resultEl.innerText = data.message ?? 'Odpověď neobsahuje zprávu.';
+
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({
+          path: data.success ? 'password-correct-kytky' : 'password-wrong-kytky',
+          title: data.success ? 'Correct password kytky' : 'Wrong password kytky',
+          event: true
+        });
+      }
+
+    } catch (err) {
+      resultEl.innerText = 'Nepodařilo se spojit se serverem.';
+      console.error('Fetch failed:', err);
+    }
+  }
+</script>
 </html>

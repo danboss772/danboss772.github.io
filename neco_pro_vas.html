@@ -1,0 +1,130 @@
+ <!DOCTYPE html>
+ <head>
+ <meta charset="UTF-8">
+   <script data-goatcounter="https://danboss.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+ </head>
+<body>
+   <style>
+  #myForm {
+    display: block;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    border: 1px solid #ddd;
+    background-color: lightblue;
+    
+    width: 60%;
+            padding: 15px;
+            background-color: lightblue;
+            border: 1px solid #333;
+    	    box-sizing: border-box;
+  }
+
+  #myForm label,
+  #myForm span {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  #myForm input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  #myForm button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
+  #myForm button[type="submit"] {
+    background-color: blue;
+    color: white;
+  }
+  #myForm .field-group {
+    margin-bottom: 32px;
+  }
+
+  #myForm button[type="reset"] {
+  }
+  #result {
+  white-space: pre-line;
+	}
+</style>
+
+  <h2>Tajná zpráva</h2>
+  <i>Hm, nenapadlo by vás, že toto má nějakou souvislost s Adélkou? Nezkusite hádat heslo?</i>
+  <p>Při rozmyšlení mě napadlo, že vlastně vím, kdo by mohla být ta neznámá osoba. Chtěl bych jí předat zprávu, která je tajná, a chci se ujistit, že to přečte jen tato osoba. Zpráva obsahuje nějaka vysvětlení a odůvodnění, která si myslím, že tady může hledat. Už je na této stránce, pro její odemknutí je však potřeba heslo, kterým je jmeno posledního domácího mazlíčka této osoby (snažil jsem se brat ne GDPR informaci). Ne, není si to možné přečíst bez hesla, ani se nesnažte. Upozorňuji, že bude fungovat pouze jméno posledního mazlíčka, je však několik přijimaných variant, které doporučuji psat latinkou bez diakritiky.</p>
+  <i>Pro zajimavost řeknu, že heslo musíte zadávat při každé návštěvě, protože kvůli GDPR ho nesmím ukládat. A je bezpečné sem cokoliv psat.</i>
+  
+  <p>Pokud jste někdo jiný, tak dostanete jinou zprávu a jiné heslo, které si doporučuji uložit pro další questy. Stačí zadat to, co je napsáno na mé samolepce na notebooku (nejznámější samolepka na FELu btw, taková s Velebilem). No ale pokud nevíte, tak se mě zeptejte a pošlu vám fotku notebooku.</p>
+  
+  <p>Toto doporučuji psat malými písmenami s mezerami bez diakritiky a punktuace. Je zase ale přijimáno několik variant.</p>
+
+  <form id="myForm" onsubmit="return false;">
+    <div class="field-group">
+    <label for="fname">Jméno nazlíčka nebo nápis samolepky:</label>
+    <input type="text" name="fname" id="fname">
+  </div>
+    <button type="submit" onclick="submitForm()">Zkontrolovat</button>
+    <button type="reset">Vymazat</button>
+  </form>
+
+  <p id="result">Zkuste zadat heslo.</p>
+
+  <script>
+  async function submitForm() {
+    const fname = document.getElementById('fname').value;
+    const resultEl = document.getElementById('result');
+
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: 'form-submit',
+        title: 'Password attempt',
+        event: true
+      });
+    }
+
+    try {
+      const res = await fetch('https://danboss.pythonanywhere.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fname })
+      });
+
+      if (!res.ok) {
+        resultEl.innerText = `Chyba serveru (status ${res.status})`;
+        return;
+      }
+
+      const data = await res.json();
+      resultEl.innerText = data.message ?? 'Odpověď neobsahuje zprávu.';
+
+      if (window.goatcounter && window.goatcounter.count) {
+  const successMap = {
+    0: { path: 'password-wrong', title: 'Wrong password' },
+    1: { path: 'password-correct-j', title: 'Hers password' },
+    2: { path: 'password-correct-others', title: 'Others password' },
+  };
+  const { path, title } = successMap[data.success] ?? successMap[0];
+
+  window.goatcounter.count({
+    path,
+    title,
+    event: true
+ 	 });
+	}
+
+    } catch (err) {
+      resultEl.innerText = 'Nepodařilo se spojit se serverem.';
+      console.error('Fetch failed:', err);
+    }
+  }
+</script>
+</body>

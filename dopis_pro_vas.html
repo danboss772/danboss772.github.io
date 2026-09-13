@@ -14,5 +14,42 @@
 
 <p>Jinak nechci jí to psát do DMs, abych neporušil její přání, které už létá dodržuji. Objeví se přímo na této stránce. Pak bych rád řekl, že mě může sledovat na Instagramu, nemám nic protí, ať mi pošle žádost.</p>
 
+<h2>Je to tady! Chci, aby se to dostalo jen k ní, proto je tady heslo.</h2>
+
+<p>Je to tady a pro odemknuti zpravy je potreba zadat misto, kde jsme casto travilí čas a kam jsme často chodili, nápovědou je, že to je název náměstí.</p>
+
+<p>Ne, je to bezpečné to sem zadávat. Ne, neukladám si tz věci, co sem zadávate. Ne, nevidím, že sem chodíte a že to sem dávate.</p>
+
+ <form id="myForm" onsubmit="return false;">
+    <div class="field-group">
+    <label for="fname">Heslo:</label>
+    <input type="text" name="fname" id="fname">
+  </div>
+    <button type="submit"  onclick="submitForm()">Zkontrolovat</button>
+    <p id="result"></p>
+  </form>
+  
+  <script>
+  async function submitForm() {
+    const fname = document.getElementById('fname').value;
+    const resultEl = document.getElementById('result');
+
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: 'form-submit',
+        title: 'Password jeji zprava',
+        event: true
+      });
+    }
+    
+     resultEl.innerText = "Ooops, bohužel nějak selhal server. Možná to máš správně, ale zkus to znova za chvíli.";
+        return;
+ }
+</script>
+
 </body>
+
+
+
+
 </html>

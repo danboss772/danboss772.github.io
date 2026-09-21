@@ -8,11 +8,50 @@
 </head>
 <body>
 
-<p>Here je něco pro ní (dopis ještě napišu):</p>
+<style>
+	  .units {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 28px);
+    width: 100%;
+  }
+  .unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+
+</style>
+
+<h1>Tato stránka bude brzy smazaná</h1>
+<p>Tato stránka bude brzy smazaná, jelikož předpokladám, že doteď se moje zpráva nedostala k té osobě, kterou jsem myslel. Předpokladám, že už nechodí sem, ani na můj Instagram nebo jsem se trefil špatně. Je mi to líto, že jí nemohu vysvětlit to, co jsem chtěl. Pokud ale jste tato osoba, můžete zkusit zadat heslo a přečíst zprávu, připadně, pokud uznáte za vhodné, přečíst zprávu a ozvat se mi.</p>
+
+<p>Jinak pokud nejste tato jedna tajemná osoba a myslel jsem to špatně, děkuji, že jste tady s námi byli. Kdybyste se chtěli vrátit do hry, můžete mi zase napsat. A ať se vám v životě dáři!</p>
+
+<div class="card">
+    <div class="eyebrow" id="eyebrow"> <b>Tato stránka bude smazaná za:</b></div>
+ 
+    <div class="units" id="units">
+      <div class="unit"><div class="num" id="d">00</div><div class="unit-label">dní</div></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="num" id="h">00</div><div class="unit-label">hodin</div></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="num" id="m">00</div><div class="unit-label">minut</div></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="num" id="s">00</div><div class="unit-label">sekund</div></div>
+    </div>
+ 
+    <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+  </div>
+
+
+<p>Here je něco pro ní (dopis můžete odemknout dole):</p>
 
 <img src="images/panda.webp" alt="Description of the image" style="width:20%">
 
-<p>Jinak nechci jí to psát do DMs, abych neporušil její přání, které už létá dodržuji. Objeví se přímo na této stránce. Pak bych rád řekl, že mě může sledovat na Instagramu, nemám nic protí, ať mi pošle žádost.</p>
+<p>Jinak nechci jí to psát do DMs, abych neporušil její přání, které už létá dodržuji. Objeví se přímo na této stránce po zadání hesla. Pak bych rád řekl, že mě může sledovat na Instagramu, nemám nic protí, ať mi pošle žádost.</p>
 
 <h2>Je to tady! Chci, aby se to dostalo jen k ní, proto je tady heslo.</h2>
 
@@ -46,6 +85,78 @@
         return;
  }
 </script>
+
+<script>
+(function () {
+  // "End of week" = the coming Sunday at 23:59:59 local time.
+  // To use Saturday night instead, change TARGET_DOW to 6.
+  const TARGET_DOW = 0; // 0 = Sunday
+ 
+  function getWeekEnd(now) {
+    const end = new Date(now);
+    const daysUntil = (TARGET_DOW - now.getDay() + 7) % 7;
+    end.setDate(now.getDate() + (daysUntil === 0 ? 0 : daysUntil));
+    end.setHours(23, 59, 59, 999);
+    if (end <= now) {
+      end.setDate(end.getDate() + 7);
+    }
+    return end;
+  }
+ 
+  function getWeekStart(end) {
+    const start = new Date(end);
+    start.setDate(start.getDate() - 6);
+    start.setHours(0, 0, 0, 0);
+    return start;
+  }
+ 
+  const dEl = document.getElementById('d');
+  const hEl = document.getElementById('h');
+  const mEl = document.getElementById('m');
+  const sEl = document.getElementById('s');
+  const fillEl = document.getElementById('fill');
+  const unitsEl = document.getElementById('units');
+  const doneMsgEl = document.getElementById('doneMsg');
+  const eyebrowEl = document.getElementById('eyebrow');
+ 
+  function pad(n) { return n.toString().padStart(2, '0'); }
+ 
+  function render() {
+    const now = new Date();
+    const end = getWeekEnd(now);
+    const start = getWeekStart(end);
+    const totalMs = end - start;
+    const remainingMs = end - now;
+ 
+    if (remainingMs <= 0) {
+      unitsEl.style.display = 'none';
+      doneMsgEl.style.display = 'block';
+      fillEl.style.width = '100%';
+      return;
+    }
+ 
+    const totalSeconds = Math.floor(remainingMs / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+ 
+    dEl.textContent = pad(days);
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+ 
+    const elapsedFraction = 1 - remainingMs / totalMs;
+    fillEl.style.width = Math.max(0, Math.min(100, elapsedFraction * 100)) + '%';
+ 
+    /* eyebrowEl.innerHTML = 'Time left until <strong>' + end.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' }) + '</strong>'; */
+  }
+ 
+  render();
+  setInterval(render, 1000);
+})();
+</script>
+
 
 </body>
 

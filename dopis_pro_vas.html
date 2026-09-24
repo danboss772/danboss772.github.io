@@ -84,6 +84,27 @@
   white-space: pre-line;
   color: red;
 	}
+  
+  .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.magicButton {
+  background-color: yellow;
+  width: 20%;
+  height: 60px;
+  display: block;
+  margin: 0 auto 30px;
+ }
+ .Button {
+  background-color: lightblue;
+  width: 50%;
+  padding: 20px 0;
+ }
 
 </style>
 
@@ -107,7 +128,33 @@
  
     <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
   </div>
+  
+<h2>Lákavá nabídka</h2>
+<p>Stejně jako Babiš přidal dva tisíce důchodcům, tak i já bych se ním chtěl inspirovat a na konec existence této stránky přidat velmi lákavou a výhodnou nabídku. Skutečně si myslím, že bych věděl, kdo mě sledoval na Instagramu a možná i tady a možná i sleduje pořád (anebo mě baví psát random stránky, které nejspíše nikdo neuvidí)</p>
 
+<p>Byly mezi námi nějaké špatné věci. Nabízím možnost začit to celé od znova a zapomenout na staré hádky.</p>
+
+<p>Proto jsem udělal "kouzelné tlačitko", stiskem kterého symbolický zapomeneme na všechno špatný, co bylo v našém přátelství a zkusíme začit od znova. Pokud s tím souhlasíš, můžeš ho zmačknout.</p>
+
+<p>Pokud to zmáčkneš, neznamená to ale, že se budeme znova bavit a kamarádit jako dřiv. Můžeme už vůbec přestat interagovat, ale musíš slíbit to, že mě přestaneš sledovat. Znamená to jen to, že zapomeneme na staré hádky a myslím si, že pro nás oba to bude lepší. Už nebudeme tahát nikam minulost, ale můžeme třeba začit od začátku.</p>
+
+<p>Pokud to čteš tak promiň, ale mně vadí, že mě takhle chvíli sleduješ a nic neřekneš proč to děláš. Nabídnul jsem ti hodně možnosti a přiležitosti, ale ty mě jen mlčky sleduješ dál. Já nevím, jestli to děláš, a o to to je horší, ale pokud to čteš, tak ano. Nemusíš se přiznat, jen nabizím nějakou cestu ven z toho pro nás oba. Takhle budu vědět, že buď se už nikdy nepotkáme nebo se potkáme a nebudeme vytáhovat věcí, které nechceme.</p>
+
+<p>Pokud sis ještě nepřečetla dopis a nevyužiješ tlačitko, tak jsi na táhu Ty. Musíš něco pro mě vymyslet, když tě to baví (ok, mě to baví taky). Questy byly dobré a kamarády to bavilo, nevím, jestli jsi nějaký dělala (oni pořád běží mimochodem, jen nemáš heslo, které Ti ale mohu dat).</p>
+
+Dole jsou i jiná tlačitka, pomoci kterých můžeš odpovědět. Alespoň si procvičím to programování ve JavaScriptu.
+
+<p>Děkuji, Denys.</p>
+
+<p><b>Pozor!</b> <i>Stiskem jakéhokoliv tlačitka se Denysovi odešle automatizovaná zpráva s upozorněním Tvoje volby. Ta upozornění neobsahuje žádné Tvoje údaje, nic kromě času.</i></p>
+
+<button class="magicButton" onclick="submitMagicForm(this)"><b>Jdu do toho! (magické tlačítko)</b></button>
+
+<div class="buttons">
+  <button class="Button" onclick="submitMagicMove(this)" id="but1">Ok, jsem na tahu!</button>
+  <button class="Button" onclick="submitMagicStop(this)" id="but2">Denysi, přestaň s tím prosím</button>
+  <button class="Button" onclick="submitMagicOther(this)" id="but3">Jsem někdo jiný haha</button>
+</div>
 
 <p>Here je něco pro ní (dopis můžete odemknout dole):</p>
 
@@ -131,21 +178,59 @@
   </form>
   
   <script>
-  async function submitForm() {
-    const fname = document.getElementById('fname').value;
-    const resultEl = document.getElementById('result');
+  function submitMagicForm(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-magic=but',
+      title: 'Magic But',
+      event: true
+    });
+  }
 
-    if (window.goatcounter && window.goatcounter.count) {
-      window.goatcounter.count({
-        path: 'form-submit',
-        title: 'Password jeji zprava',
-        event: true
-      });
-    }
-    
-     resultEl.innerText = "Ooops, bohužel nějak selhal server. Možná to máš správně, ale zkus to znova za chvíli.";
-        return;
- }
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+	}
+</script>
+
+<script>
+	function submitMagicMove(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-tah',
+      title: 'Tah',
+      event: true
+    });
+  }
+
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+	}
+ 
+ function submitMagicStop(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-stop',
+      title: 'Stop',
+      event: true
+    });
+  }
+
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+}
+ 
+ function submitMagicOther(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-other',
+      title: 'Smth other',
+      event: true
+    });
+  }
+
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+}
 </script>
 
 <script>

@@ -185,10 +185,14 @@ Dole jsou i jiná tlačitka, pomoci kterých můžeš odpovědět. Alespoň si p
       title: 'Magic But',
       event: true
     });
+	  btn.innerText = "Děkuji a posláno";
+  	btn.disabled = true;
   }
-
-  btn.innerText = "Děkuji a posláno";
-  btn.disabled = true; // optional: prevents sending the notification multiple times
+	else {
+		btn.innerText = "Odpověď nezaznamenáná. Zkuste jiný prohlížeč.";
+ 	 btn.disabled = true;
+	}
+  
 	}
 </script>
 
@@ -200,10 +204,15 @@ Dole jsou i jiná tlačitka, pomoci kterých můžeš odpovědět. Alespoň si p
       title: 'Tah',
       event: true
     });
+	  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true;
   }
+		else {
+		 btn.innerText = "Odpověď nezaznamenáná. Zkuste jiný prohlížeč.";
+ 	 btn.disabled = true;
+		}
 
-  btn.innerText = "Děkuji a posláno";
-  btn.disabled = true; // optional: prevents sending the notification multiple times
+  
 	}
  
  function submitMagicStop(btn) {
@@ -213,10 +222,15 @@ Dole jsou i jiná tlačitka, pomoci kterých můžeš odpovědět. Alespoň si p
       title: 'Stop',
       event: true
     });
+	  btn.innerText = "Děkuji a posláno";
+ 	 btn.disabled = true;
   }
+	 else {
+		 btn.innerText = "Odpověď nezaznamenáná. Zkuste jiný prohlížeč.";
+ 	 btn.disabled = true;
+	 }
 
-  btn.innerText = "Děkuji a posláno";
-  btn.disabled = true; // optional: prevents sending the notification multiple times
+  
 }
  
  function submitMagicOther(btn) {
@@ -226,10 +240,14 @@ Dole jsou i jiná tlačitka, pomoci kterých můžeš odpovědět. Alespoň si p
       title: 'Smth other',
       event: true
     });
+	  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true;
   }
-
-  btn.innerText = "Děkuji a posláno";
-  btn.disabled = true; // optional: prevents sending the notification multiple times
+else {
+btn.innerText = "Odpověď nezaznamenáná. Zkuste jiný prohlížeč.";
+ 	 btn.disabled = true;
+}
+  
 }
 </script>
 

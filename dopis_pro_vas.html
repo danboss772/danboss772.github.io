@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Dopis pro vas</title>
+  <script data-goatcounter="https://danboss.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<style>
+	  .units {
+    display: flex;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 28px);
+    width: 100%;
+  }
+  .unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+  
+  .box {
+            width: 40%;
+            padding: 15px;
+            background-color: lightblue;
+            border: 1px solid #333;
+            margin: 0 0 20px 0;
+    	    box-sizing: border-box;
+        }
+        
+         #myForm {
+    display: block;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    border: 1px solid #ddd;
+    background-color: lightblue;
+    
+    width: 60%;
+            padding: 15px;
+            background-color: lightblue;
+            border: 1px solid #333;
+    	    box-sizing: border-box;
+  }
+  
+
+  #myForm label,
+  #myForm span {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  #myForm input[type="text"] {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  #myForm button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
+  #myForm button[type="submit"] {
+    background-color: blue;
+    color: white;
+  }
+  #myForm .field-group {
+    margin-bottom: 32px;
+  }
+
+  #myForm button[type="reset"] {
+  }
+  #result {
+  white-space: pre-line;
+  color: red;
+	}
+  
+  .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.magicButton {
+  background-color: yellow;
+  width: 20%;
+  height: 60px;
+  display: block;
+  margin: 0 auto 30px;
+ }
+ .Button {
+  background-color: lightblue;
+  width: 50%;
+  padding: 20px 0;
+ }
+
+</style>
+
+<!--
+<h1>Tato stránka bude brzy smazaná</h1>
+<p>Tato stránka bude brzy smazaná, jelikož předpokladám, že doteď se moje zpráva nedostala k té osobě, kterou jsem myslel. Předpokladám, že už nechodí sem, ani na můj Instagram nebo jsem se trefil špatně. Je mi to líto, že jí nemohu vysvětlit to, co jsem chtěl. Pokud ale jste tato osoba, můžete zkusit zadat heslo a přečíst zprávu, připadně, pokud uznáte za vhodné, přečíst zprávu a ozvat se mi.</p>
+
+<p>Jinak pokud nejste tato jedna tajemná osoba a myslel jsem to špatně, děkuji, že jste tady s námi byli. Kdybyste se chtěli vrátit do hry, můžete mi zase napsat. A ať se vám v životě dáři!</p>
+
+<div class="card">
+    <div class="eyebrow" id="eyebrow"> <b>Tato stránka bude smazaná za:</b></div>
+ 
+    <div class="units" id="units">
+      <div class="unit"><div class="num" id="d">00</div><div class="unit-label">dní</div></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="num" id="h">00</div><div class="unit-label">hodin</div></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="num" id="m">00</div><div class="unit-label">minut</div></div>
+      <div class="sep">:</div>
+      <div class="unit"><div class="num" id="s">00</div><div class="unit-label">sekund</div></div>
+    </div>
+ 
+    <div class="progress-track"><div class="progress-fill" id="fill"></div></div>
+  </div>
+  
+<h2>Lákavá nabídka</h2>
+<p>Stejně jako Babiš přidal dva tisíce důchodcům, tak i já bych se ním chtěl inspirovat a na konec existence této stránky přidat velmi lákavou a výhodnou nabídku. Skutečně si myslím, že bych věděl, kdo mě sledoval na Instagramu a možná i tady a možná i sleduje pořád (anebo mě baví psát random stránky, které nejspíše nikdo neuvidí)</p>
+
+<p>Byly mezi námi nějaké špatné věci. Nabízím možnost začit to celé od znova a zapomenout na staré hádky.</p>
+
+<p>Proto jsem udělal "kouzelné tlačitko", stiskem kterého symbolický zapomeneme na všechno špatný, co bylo v našém přátelství a zkusíme začit od znova. Pokud s tím souhlasíš, můžeš ho zmačknout.</p>
+
+<p>Pokud to zmáčkneš, neznamená to ale, že se budeme znova bavit a kamarádit jako dřiv. Můžeme už vůbec přestat interagovat, ale musíš slíbit to, že mě přestaneš sledovat. Znamená to jen to, že zapomeneme na staré hádky a myslím si, že pro nás oba to bude lepší. Už nebudeme tahát nikam minulost, ale můžeme třeba začit od začátku.</p>
+
+<p>Pokud to čteš tak promiň, ale mně vadí, že mě takhle chvíli sleduješ a nic neřekneš proč to děláš. Nabídnul jsem ti hodně možnosti a přiležitosti, ale ty mě jen mlčky sleduješ dál. Já nevím, jestli to děláš, a o to to je horší, ale pokud to čteš, tak ano. Nemusíš se přiznat, jen nabizím nějakou cestu ven z toho pro nás oba. Takhle budu vědět, že buď se už nikdy nepotkáme nebo se potkáme a nebudeme vytáhovat věcí, které nechceme.</p>
+
+<p>Pokud sis ještě nepřečetla dopis a nevyužiješ tlačitko, tak jsi na táhu Ty. Musíš něco pro mě vymyslet, když tě to baví (ok, mě to baví taky). Questy byly dobré a kamarády to bavilo, nevím, jestli jsi nějaký dělala (oni pořád běží mimochodem, jen nemáš heslo, které Ti ale mohu dat).</p>
+
+Dole jsou i jiná tlačitka, pomoci kterých můžeš odpovědět. Alespoň si procvičím to programování ve JavaScriptu.
+
+<p>Děkuji, Denys.</p>
+
+<p><b>Pozor!</b> <i>Stiskem jakéhokoliv tlačitka se Denysovi odešle automatizovaná zpráva s upozorněním Tvoje volby. Ta upozornění neobsahuje žádné Tvoje údaje, nic kromě času.</i></p>
+
+<button class="magicButton" onclick="submitMagicForm(this)"><b>Jdu do toho! (magické tlačítko)</b></button>
+
+<div class="buttons">
+  <button class="Button" onclick="submitMagicMove(this)" id="but1">Ok, jsem na tahu!</button>
+  <button class="Button" onclick="submitMagicStop(this)" id="but2">Denysi, přestaň s tím prosím</button>
+  <button class="Button" onclick="submitMagicOther(this)" id="but3">Jsem někdo jiný haha</button>
+</div>
+
+<p>Here je něco pro ní (dopis můžete odemknout dole):</p>
+
+<img src="images/panda.webp" alt="Description of the image" style="width:20%">
+
+<p>Jinak nechci jí to psát do DMs, abych neporušil její přání, které už létá dodržuji. Objeví se přímo na této stránce po zadání hesla. Pak bych rád řekl, že mě může sledovat na Instagramu, nemám nic protí, ať mi pošle žádost.</p>
+
+<h2>Je to tady! Chci, aby se to dostalo jen k ní, proto je tady heslo.</h2>
+
+<p>Oukej, aby trochu se mi shromaždily odpovědí, které ale mohu popsat jenom slovy vyučujicího na obvody, "od nějakých debilů". Von každej "debil" se tam snažil kliknout na tlačitko (místo účení se na lineární algebru).</p>
+
+<p>Proto je potřeba heslo (a protože sem sakra píšu spoustů svých osobních údajů). Předpokládám, že tá neznámá osoba, která sledujovala můj Instagram něco o mě ví. Že minimálně jsme jako Tary a jeho největší fanýnka (you get the point).</p>
+
+<p>Nakonec idka kdo to je, proto pro odemčení obsahu funguje několik hesel a všechná jsou rovnocenná. Můžete zadat jakékoliv z nich. Na výběr máte:</p>
+
+<ol>
+  <li>Obec, ve které jsme žili před přestěhováním se do Prahy.</li>
+  <li>Jmeno mého psa nebo kocoura.</li>
+  <li>Pro FELáky: existuje nějaká neoficiální "katedra", do které patří "short kings". Má jedinou "místnost" snad ve třetím patře. Nápověda: dvě slova rozdělená spojkou a.</li>
+</ol>
+
+<p>Ne, je to bezpečné to sem zadávat. Ne, neukladám si ty věci, co sem zadávate. Ne, nevidím, že sem chodíte a že to sem dávate.</p>
+
+ <form id="myForm" onsubmit="return false;">
+    <div class="field-group">
+    <label for="fname">Heslo:</label>
+    <input type="text" name="fname" id="fname">
+  </div>
+    <button type="submit"  onclick="submitForm()">Zkontrolovat</button>
+    <p id="result"></p>
+  </form>
+
+!-->
+
+<p>Celá táto hra je jeden velký larp. Nic není reálné, většina informace je vymyšlená a příběh s Adélou taky. Pokud byste byli tou "záhadnou" osobou nebo jen tak to náhodou našli, prosím prosím prosím, kontaktujte mě. Slovy našého přednašejicího na obvody bych řekl, že se bojím, že "sem přijdou debilové a začnou ty vole máčkat tlačítka". A té záhadné osobě chci něco říct, jen nechci, aby to "debilové" tady četli (proto se mi musí ozvat s anonymním mailem nebo anonymním ig účtem).</p>
+
+
+
+
+
+  
+  <script>
+  function submitMagicForm(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-magic=but',
+      title: 'Magic But',
+      event: true
+    });
+  }
+
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+	}
+</script>
+
+<script>
+	function submitMagicMove(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-tah',
+      title: 'Tah',
+      event: true
+    });
+  }
+
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+	}
+ 
+ function submitMagicStop(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-stop',
+      title: 'Stop',
+      event: true
+    });
+  }
+
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+}
+ 
+ function submitMagicOther(btn) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'form-submit-other',
+      title: 'Smth other',
+      event: true
+    });
+  }
+
+  btn.innerText = "Děkuji a posláno";
+  btn.disabled = true; // optional: prevents sending the notification multiple times
+}
+</script>
+
+<script>
+(function () {
+  // "End of week" = the coming Sunday at 23:59:59 local time.
+  // To use Saturday night instead, change TARGET_DOW to 6.
+  const TARGET_DOW = 0; // 0 = Sunday
+ 
+  function getWeekEnd(now) {
+    const end = new Date(now);
+    const daysUntil = (TARGET_DOW - now.getDay() + 7) % 7;
+    end.setDate(now.getDate() + (daysUntil === 0 ? 0 : daysUntil));
+    end.setHours(23, 59, 59, 999);
+    if (end <= now) {
+      end.setDate(end.getDate() + 7);
+    }
+    return end;
+  }
+ 
+  function getWeekStart(end) {
+    const start = new Date(end);
+    start.setDate(start.getDate() - 6);
+    start.setHours(0, 0, 0, 0);
+    return start;
+  }
+ 
+  const dEl = document.getElementById('d');
+  const hEl = document.getElementById('h');
+  const mEl = document.getElementById('m');
+  const sEl = document.getElementById('s');
+  const fillEl = document.getElementById('fill');
+  const unitsEl = document.getElementById('units');
+  const doneMsgEl = document.getElementById('doneMsg');
+  const eyebrowEl = document.getElementById('eyebrow');
+ 
+  function pad(n) { return n.toString().padStart(2, '0'); }
+ 
+  function render() {
+    const now = new Date();
+    const end = getWeekEnd(now);
+    const start = getWeekStart(end);
+    const totalMs = end - start;
+    const remainingMs = end - now;
+ 
+    if (remainingMs <= 0) {
+      unitsEl.style.display = 'none';
+      doneMsgEl.style.display = 'block';
+      fillEl.style.width = '100%';
+      return;
+    }
+ 
+    const totalSeconds = Math.floor(remainingMs / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+ 
+    dEl.textContent = pad(days);
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+ 
+    const elapsedFraction = 1 - remainingMs / totalMs;
+    fillEl.style.width = Math.max(0, Math.min(100, elapsedFraction * 100)) + '%';
+ 
+    /* eyebrowEl.innerHTML = 'Time left until <strong>' + end.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' }) + '</strong>'; */
+  }
+ 
+  render();
+  setInterval(render, 1000);
+})();
+</script>
+
+
+</body>
+
+
+
+
+</html>

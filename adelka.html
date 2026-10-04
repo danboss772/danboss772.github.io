@@ -140,6 +140,15 @@
     
      resultEl.innerText = `Špatně zadané heslo. Zkuste znova.`;
         return;
+        
+        window.addEventListener('pageshow', (event) => {
+  if (event.persisted && window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: location.pathname + location.search,
+      title: document.title,
+    });
+  }
+});
     /*
 
     try {
@@ -172,4 +181,5 @@
     */
   }
 </script>
+
 </html>

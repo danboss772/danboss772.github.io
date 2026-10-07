@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Love letter pro Adélku</title>
+  <style>
+  * {
+  box-sizing: border-box;
+  /* outline: 1px solid red; */
+}
+  
+  	html, body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url('images/Prague.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.text{
+	padding: 0px 20px;
+}
+
+.links{
+	background-color:white;
+	width: 35%;
+	padding: 5px 0;
+}
+
+table {
+	width: 50%;
+}
+
+h1 {
+  color: blue;
+}
+p {
+  color: black;
+}
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.inside_table {
+	color: white;
+  	font-weight: bold;
+}
+
+.site-footer {
+  width: 100%;
+  background-color: lightblue;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+  color: white;
+  text-align: left;
+  bottom: 0;
+  left: 0;
+  margin-top: auto;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+@media (max-width: 600px) {
+  .links {
+    width: 90%;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  .text {
+    padding: 0 10px;
+  }
+  .site-footer {
+    padding: 20px 10px;
+  }
+}
+
+        .box {
+            width: 90%;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #333;
+            margin: 0 auto 20px;
+    	    box-sizing: border-box;
+        }
+        body {
+  	    background-color: white;
+  	    color: black;
+	}
+
+	.dark-mode {
+            background-color: black;
+  	    color: white;
+  	    .box {
+  	    	border: 1px solid lightblue;
+  	    	background-color: black;
+  	    }
+  	    .box p {
+  	    	color: white;
+  	    }
+	}
+	.topnav {
+ 	    background-color: lightblue;
+  	    display: flex;
+	}
+	.push-right {
+  	    margin-left: auto;
+	}
+	.home {
+	    font-weight: bold;
+	}
+	 .topnav a {
+        padding: 12px 16px;
+        font-size: 18px;
+        color: black;
+        display: inline-block;
+        text-decoration: none;
+        }
+        .box img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+}
+</style>
+
+<script data-goatcounter="https://danboss.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+        
+</head>
+
+
+<body>
+<div class="topnav">
+  	<a href="index.html" class="home" data-goatcounter-click="Home">Home</a>
+  	<a href="#" onclick="myFunction(); return false;" class="push-right" data-goatcounter-click="Dark_Contact">Dark theme</a>
+  </div>
+<h1  class="text">Contact</h1>
+<div class="box">
+<p>When contacting me please use primarily email or texts. I rarely reply to phone calls. Nevertheless, please see my timetable and call me in my free time.</p>
+<p>If you are contacting me from outside email, please check OpenPGP signature, otherwise there is no guarantee I am mailing you.</p>
+<p><b>OpenPGP fingerptint</b> for CTU mail: 67FE 3004 CC80 88E4 61BA E3FC B2EB E6D1 839B 641C</p>
+<p><b>OpenPGP fingerptint</b> for private mail: 8D3D 9E03 1B75 E385 4A96 AC79 867E 8A2B 0F6A 3443</p>
+</div>
+
+<div class="box">
+<p>My timetable:</p>
+<img src="images/rozvrh.png" alt="rozvrh">
+<p>I am also mostly busy on Saturday, but the timetable changes every time. Also there is a big possibility it might change during semestr, so please check every time I am not replying for too long.</p>
+</div>
+
+
+<footer class="site-footer">
+  <p></p>
+</footer>
+
+<script>
+	function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+</body>

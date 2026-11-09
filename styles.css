@@ -53,12 +53,24 @@ section::after {
   	font-weight: bold;
 }
 
+.inside_table-not-to-be-seen {
+	display: none;
+}
+
+@media (min-width: 800px) and (max-width: 840px) {
+  .inside_table-not-to-be-seen {
+    display: inline;
+    color: white;
+    font-weight: bold;
+  }
+}
+
 .site-footer {
   width: 100%;
   background-color: lightblue;
   background-size: cover;
   background-position: center;
-  padding: 40px 20px;
+  padding: 10px 20px;
   color: white;
   text-align: left;
   bottom: 0;

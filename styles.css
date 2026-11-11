@@ -2,20 +2,24 @@
   box-sizing: border-box;
   /* outline: 1px solid red; */
 }
-html, body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  min-height: 100dvh;
-}
 
 main {
 	flex: 1 0 auto;
 }
 
+html {
+  margin: 0;
+  height: 100%;
+}
+
 body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;            /* fallback for old WebViews */
   min-height: 100vh;
+  min-height: -webkit-fill-available;
+  min-height: 100dvh;          /* must be LAST so it wins where supported */
   background-image: url('images/Prague2.jpeg');
   background-size: cover;
   background-position: center;

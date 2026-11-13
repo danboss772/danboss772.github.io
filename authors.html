@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Authors</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
   * {
   box-sizing: border-box;
@@ -170,6 +171,51 @@ section::after {
   @media (width: 820px) {
     .not-to-be-seen { display: block; }
   }
+  
+  .pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background-color: white;
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.pdf-link i {
+  font-size: 1.5em;
+  color: #d93025; /* PDF red */
+}
+
+.pdf-link:focus-visible {
+  outline: 2px solid #d93025;
+  outline-offset: 2px;
+}
+
+.expand {
+  background-color: white;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 0 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.expand summary {
+  cursor: pointer;
+  padding: 12px 0;
+  font-weight: 600;
+}
+
+.expand p {
+  margin: 0;
+  padding: 0 0 14px;
+}
 </style>
 
 <script data-goatcounter="https://danboss.goatcounter.com/count"
@@ -214,14 +260,35 @@ section::after {
 <div class="box">
 <h2  class="text">Letter to mommy (important!)</h2>
 
-<p>There are a lot of things I wanted to tell her. There are a lot of explanations and everything. It's a regular PDF with a password (OK, I've learned that it's better to do it this way than how it was done before). Daddy and mommy went to high school together, so she must know the password. Unfortunately, there may be only one form of the password here, and it should be <b>without diacritics (háčky čárky), without spaces (use "-" instead of a space), and without capital letters.</b> To open it, just enter <b>[your pet's name]-[name of high school (one word, 7 letters), prostě název našé školy]-[surname of her homeroom teacher (jméno třidní)]-[her hometown (one word)]</b>. In total, that's 4 words separated by "-". The pet's name must be written the same way as the name of the character it was named after. For instance it could be like "fik-kepler-novakova-zlin"</p>
+<p>There are a lot of things I wanted to tell her. There are a lot of explanations and everything, so I made a letter to her.</p>
 
-<a href="images/dopis_final.pdf" data-goatcounter-click="dopis_final">letter_to_mommy.pdf</a>
+<a class="pdf-link" href="images/dopis_final.pdf" data-goatcounter-click="dopis_final" download>
+  <i class="fa-regular fa-file-pdf" aria-hidden="true"></i>
+  <span>letter.pdf</span>
+</a>
 
-<p>Privacy concerns: PDF is encrypted and the decryption is running <b>locally</b> on your computer. It's just a normal PDF with password, the same you get vyplatní páska on or any private documents. You can even download it. So there is no way I can read the "password" you are typing. The letter may contain private infortmation like names and so on and I do not want to expose anyone.</p>
+<details class="expand">
+  <summary data-goatcounter-click="can't read"
+           data-goatcounter-title="Can't read">Why can't I read it?</summary>
+  <p> It's a regular PDF with a password (OK, I've learned that it's better to do it this way than how it was done before). Daddy and mommy went to high school together, so she must know the password. Unfortunately, there may be only one form of the password here, and it should be <b>without diacritics (háčky čárky), without spaces (use "-" instead of a space), and without capital letters.</b> To open it, just enter <b>[your pet's name]-[name of high school (one word, 7 letters), prostě název našé školy]-[surname of her homeroom teacher (jméno třidní)]-[her hometown (one word)]</b>. In total, that's 4 words separated by "-". The pet's name must be written the same way as the name of the character it was named after. For instance it could be like "fik-kepler-novakova-zlin"<</p>
+</details>
+
+<details class="expand">
+  <summary data-goatcounter-click="privacy concerns"
+           data-goatcounter-title="Privacy concerns">Privacy concerns</summary>
+  <p>Privacy concerns: PDF is encrypted and the decryption is running <b>locally</b> on your computer. It's just a normal PDF with password, the same you get vyplatní páska on or any private documents. You can even download it. So there is no way I can read the "password" you are typing. The letter may contain private infortmation like names and so on and I do not want to expose anyone.</p>
+</details>
+
+<details class="expand">
+  <summary data-goatcounter-click="any other ways"
+           data-goatcounter-title="Any other ways">Privacy concerns</summary>
+  <p>Ok, I am working on it, but please read it here.</p>
+</details>
 
 
 </div>
+
+
 
 
 <footer class="site-footer">

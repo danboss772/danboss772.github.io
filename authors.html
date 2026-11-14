@@ -172,6 +172,8 @@ section::after {
     .not-to-be-seen { display: block; }
   }
   
+  .ok-link[hidden] { display: none; }
+  
   .pdf-link {
   display: inline-flex;
   align-items: center;
@@ -245,7 +247,7 @@ section::after {
 
 </div>
 
-<div class="box">
+<div class="box" id="ok-link1" hidden>
 <h2  class="text">About mommy</h2>
 <p>But I have been missing my mom. Dad says that she was really sweet, but unfortunatelly, they stoped talking. If mommy ever sees it, I hope she reads it.</p>
 
@@ -257,7 +259,7 @@ section::after {
 
 </div>
 
-<div class="box">
+<div id="ok-link" class="box" hidden>
 <h2  class="text">Letter to mommy (important!)</h2>
 
 <p>There are a lot of things I wanted to tell her. There are a lot of explanations and everything, so I made a letter to her.</p>
@@ -292,6 +294,26 @@ section::after {
 </details>
 
 <details class="expand">
+  <summary data-goatcounter-click="problemy-s-hlavou"
+           data-goatcounter-title="problemy-s-hlavou">Má Denys opravdu problémy s hlavou, že tohle vymyslel?</summary>
+   <ol>
+  <li>Toto nevymyslel Denys.</li>
+  <li>Denys vymyslel jen questy s Adélkou.</li>
+  <li>Adélka neexistuje.</li>
+  <li>Denys musí psát vtipy do divadelních her.</li>
+  </ol>
+</details>
+
+<details class="expand">
+  <summary data-goatcounter-click="urazka"
+           data-goatcounter-title="urazka">Are you trying to offend me? (most important)</summary>
+  
+  <p>Aneb jestli toto má být urážlivý. Tímto jsem rozhodně nechtěl nikoho urazit. Alespoň se to snažím nějak napravit. Pojal jsem to v humoristické formě, doufám že i tebe to pobavilo nebo rozesmalo. Dělám to jen proto, že jsem ztracený v tom proč mě po tolika letech sleduješ (je divný si mě zablokovat na ig ve stejný den jak jsem si tě zablokoval já třeba). 
+
+<p>Jestli ti to přijde urážlivý, tak to určitě smažu, nebo určitě to chci jednou smazat a aby táto stránka neexistovala. Je tady jen proto, že Denys je hodně ztracený v tom co se děje s tebou a snaží se to nějak pochopit. A proto jsem napsal dopis, kde se to snažím rozvést. A třeba takové Reels co sdilím na Instagramu jsou také části obrazu (doufám, že jsou tak divné, že až vtipné), ale trochu ho to ztrapňuje.</p>
+</details>
+
+<details class="expand">
   <summary data-goatcounter-click="should i"
            data-goatcounter-title="Should I">Should I read it?</summary>
   <p>Ano, prosím prosím prosím moc moc moc. Všechno začne dávat smysl.</p>
@@ -302,6 +324,8 @@ section::after {
            data-goatcounter-title="bd">What if my birthday is coming?</summary>
 	<p>Vše nej, birthday girl! I proto jsem napsal tento dopis a v něm jsou i přání a snad to uvidíš.</p>
 	<p>Doufám, že ti nezkází náladu (fakt tam není nic, co by ti ji zkazilo, je to safe, trust me).</p>
+	<p>A celkově jsem ti nechtěl tímto kazit narozeniny (doufám že ne), pokud to najdeš někdy v tomto období.</p>
+	<p>A actually je mi líto, že Denys ti tento rok nedal ani bonbóny.</p>
 </details>
 
 <details class="expand">
@@ -326,5 +350,16 @@ section::after {
    var element = document.body;
    element.classList.toggle("dark-mode");
 }
+
+function isOk() {
+    const ua = navigator.userAgent;
+    if (/iPad/.test(ua)) return true;
+    return navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  }
+
+if (isOk()) {
+    document.getElementById('ok-link').hidden = false;
+    document.getElementById('ok-link1').hidden = false;
+  }
 </script>
 </body>

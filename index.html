@@ -7,7 +7,8 @@
   <meta name="description" content="Here you can find information about me and my projects.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script data-goatcounter="https://danboss.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+        async src="//gc.zgo.at/count.js">
+</script>
 </head>
 <body>
 <main>
@@ -63,7 +64,18 @@
 </center>
 </main>
 <footer class="site-footer">
-  <p><a href="authors.html" title="Authors">Authors</a></p>
+  <a id="ok-link" class="ok-link" href="authors.html" title="Authors" hidden>Authors</a>
 </footer>
+<script>
+function isOk() {
+    const ua = navigator.userAgent;
+    if (/iPad/.test(ua)) return true;
+    return navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  }
+
+if (isOk()) {
+    document.getElementById('ok-link').hidden = false;
+  }
+</script>
 </body>
 </html> 

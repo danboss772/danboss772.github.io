@@ -71,6 +71,8 @@ section::after {
   flex-shrink: 0;
   margin-top: auto;
 }
+.ok-link[hidden] { display: none; }
+.ok-link1[hidden] { display: none; }
 
 @media (max-width: 600px) {
   .links {
